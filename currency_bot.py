@@ -25,7 +25,7 @@ def us_btc():
 	response = urllib.request.urlopen('https://blockchain.info/q/24hrprice')
 	online_course = response.read().decode()
 	saved_course = read_btc_file()
-	if int(online_course) is not int(saved_course):
+	if float(online_course) is not float(saved_course):
 		save_btc_course(online_course)
 
 	result = online_course
@@ -33,13 +33,16 @@ def us_btc():
 	return result
 
 def save_btc_course(btc_cur):
-	with open(“btc.db”, “w”) as f: 
-		f.write(btc_cur) 
+	with open('btc.db', 'w') as f: 
+		f.write(str(btc_cur)) 
 
 def read_btc_file():
-	with open(“btc.db”) as f: 
+	with open('btc.db') as f: 
 		data = f.readlines()
-	return data
+	try:
+		return data[0]
+	except Exception as e:
+		return 0
 
 
 if __name__ == '__main__':
