@@ -2,7 +2,7 @@ import urllib.request
 
 import telebot
 
-token = '963907902:AAGlt2q0bFd2gxhYjp4rnKlNILzP8PefpxM'
+from config import token
 bot = telebot.TeleBot(token)
 
 
