@@ -8,7 +8,10 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start', 'help'])
 def handle_start_help(message):
-    start_text = "Бот позволит тебе быть в курсе изменения валют."
+    start_text = f"Привет {message.chat.id}. \n\
+Бот позволит тебе быть в курсе изменения валют на $50. \n\
+Но ты можешь сменить размер шага в любой момент"
+    print(message.chat.id)
     bot.send_message(message.chat.id, start_text)
 
 
